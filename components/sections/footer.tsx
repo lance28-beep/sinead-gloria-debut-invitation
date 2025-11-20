@@ -190,7 +190,7 @@ export function Footer() {
                   <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-[#FDDBB2]" />
                 </div>
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-[family-name:var(--font-ephesis)] text-white">
-                  Sinead Gloria L. Heussaf
+                  Sinead Gloria L. Heussaff
                 </h3>
               </div>
               <div className="space-y-3 sm:space-y-4">
@@ -363,7 +363,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-5 md:gap-6">
             <div className="text-center md:text-left">
               <p className="text-white font-[family-name:var(--font-inter)] text-xs sm:text-sm">
-                © {year} Sinead Gloria L. Heussaf. All rights reserved.
+                © {year} Sinead Gloria L. Heussaff. All rights reserved.
               </p>
               <p className="text-white/80 font-[family-name:var(--font-inter)] text-xs sm:text-sm mt-0.5 sm:mt-1">
                 Made with love for this special celebration

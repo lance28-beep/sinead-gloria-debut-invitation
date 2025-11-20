@@ -878,7 +878,7 @@ export default function DashboardPage() {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-[#FD9210]/20 rounded-full mb-4 border border-[#FD9210]/30">
                 <Lock className="h-10 w-10 text-[#FD9210]" />
               </div>
-              <div className="text-xs tracking-[0.25em] uppercase font-[family-name:var(--font-crimson)] font-semibold text-[#FDDBB2]/70 mb-2">Welcome Sinead Gloria L. Heussaf</div>
+              <div className="text-xs tracking-[0.25em] uppercase font-[family-name:var(--font-crimson)] font-semibold text-[#FDDBB2]/70 mb-2">Welcome Sinead Gloria L. Heussaff</div>
               <h1 className="text-3xl font-[family-name:var(--font-crimson)] font-bold text-white mb-2">
                 Wedding Dashboard
               </h1>

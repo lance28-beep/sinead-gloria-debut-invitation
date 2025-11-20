@@ -198,7 +198,7 @@ export function Hero() {
         <div className="mb-10 sm:mb-12 md:mb-14">
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-[family-name:var(--font-ephesis)] text-white mb-4 sm:mb-6 drop-shadow-2xl" 
               style={{ textShadow: '3px 3px 6px rgba(0, 0, 0, 0.7)' }}>
-            Sinead Gloria L. Heussaf
+            Sinead Gloria L. Heussaff
           </h2>
           <p className="windsong-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white drop-shadow-2xl" 
              style={{ textShadow: '3px 3px 6px rgba(0, 0, 0, 0.7)' }}>

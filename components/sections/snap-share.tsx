@@ -326,7 +326,7 @@ export function SnapShare() {
 
                 <div className="text-center">
                   <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-ephesis)] text-[#FDDBB2] font-normal">
-                    – Sinead Gloria L. Heussaf –
+                    – Sinead Gloria L. Heussaff –
                   </span>
                 </div>
               </div>

@@ -18,7 +18,7 @@ const faqItems: FAQItem[] = [
   {
     question: "When is the RSVP deadline?",
     answer:
-      "Please confirm your attendance by January 14, 2026. We have reserved seats for you and would love to celebrate this special moment with you! Your response helps us finalize our guest list and seating arrangements for the celebration.\n\nFor any questions or concerns, please contact us at: 09088993835 / 09453324669\n\n[RSVP_LINK]Click here to RSVP[/RSVP_LINK]",
+      "Please confirm your attendance by December 1, 2025. We have reserved seats for you and would love to celebrate this special moment with you! Your response helps us finalize our guest list and seating arrangements for the celebration.\n\nFor any questions or concerns, please contact us at: 09088993835 / 09453324669\n\n[RSVP_LINK]Click here to RSVP[/RSVP_LINK]",
   },
   {
     question: "Can I bring a plus one?",

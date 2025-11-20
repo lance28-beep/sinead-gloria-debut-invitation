@@ -117,7 +117,7 @@ export function Navbar() {
                 {/* Names - Always in a row */}
                 <div className="flex flex-row items-center gap-1">
                   <span className="text-sm sm:text-base md:text-lg lg:text-xl font-[family-name:var(--font-crimson)] font-bold text-[#FD9210] group-hover:text-white transition-all duration-300 tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] uppercase leading-tight drop-shadow-md">
-                  Sinead Gloria L. Heussaf
+                  Sinead Gloria L. Heussaff
                   </span>
                 </div>
               </div>
