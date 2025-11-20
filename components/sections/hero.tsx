@@ -183,7 +183,7 @@ export function Hero() {
         <div className="mb-8 sm:mb-10 md:mb-12">
           <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-[family-name:var(--font-ephesis)] text-white drop-shadow-2xl" 
              style={{ textShadow: '3px 3px 6px rgba(0, 0, 0, 0.7)' }}>
-            nights
+            night
           </p>
         </div>
 
