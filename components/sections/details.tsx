@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Section } from "@/components/section"
 
 const EVENT_FACTS = [
-  { label: "Event Type", value: "debut" },
+  { label: "Event Type", value: "Debut" },
   { label: "Event Date", value: "December 26, 2025" },
   { label: "Event Time", value: "6:00 PM – 10:00 PM" },
   { label: "Venue", value: "Grandballroom Hall, Sugarland Hotel" },

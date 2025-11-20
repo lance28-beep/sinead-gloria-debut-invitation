@@ -280,7 +280,7 @@ export function Footer() {
               </div>
               <div className="relative space-y-2 sm:space-y-3 font-[family-name:var(--font-inter)] text-white/85 text-xs sm:text-sm">
                 <div className="flex items-center gap-2 sm:gap-3">
-                  <span>Debut – All In Package</span>
+                  <span>Debut </span>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
                   <span>Havana Nights Celebration</span>
