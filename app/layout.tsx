@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   description:
     "You're invited to the debut of Sinead Gloria L. Heussaf! Join us on December 26, 2025 at Grandballroom Hall, Sugarland Hotel, Araneta Street, Barangay Singcang, Bacolod City, Negros Occidental. RSVP, read our love story, view our gallery, and leave a message for the couple.",
   keywords:
-    "Sinead Gloria L. Heussaf debut, Filipino debut, RSVP, debut gallery, debut message wall, debut invitation, 2025 debuts, love story, guestbook, debut registry, debut details, debut venues Grandballroom Hall, Sugarland Hotel, #SineadGloriaLHeussafDebut",
+    "Sinead Gloria L. Heussaf debut, Filipino debut, RSVP, debut gallery, debut message wall, debut invitation, 2025 debuts, love story, guestbook, debut registry, debut details, debut venues Grandballroom Hall, Sugarland Hotel, #sinead-gloria-debut-invitation",
   authors: [
     { name: "Sinead Gloria L. Heussaf" },
   ],
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     address: false,
     telephone: true,
   },
-  metadataBase: new URL("https://SineadGloriaLHeussafDebut.vercel.app/"),
+  metadataBase: new URL("https://sinead-gloria-debut-invitation.vercel.app/"),
   alternates: {
-    canonical: "https://SineadGloriaLHeussafDebut.vercel.app/",
+    canonical: "https://sinead-gloria-debut-invitation.vercel.app/",
   },
   icons: {
     icon: [
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://SineadGloriaLHeussafDebut.vercel.app/Details/image.png",
+        url: "https://sinead-gloria-debut-invitation.vercel.app/Details/image.png",
         width: 1200,
         height: 630,
         alt: "Sinead Gloria L. Heussaf Debut Invitation - December 26, 2025",
@@ -79,8 +79,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sinead Gloria L. Heussaf Debut Invitation",
     description:
-      "You're invited to the debut of Sinead Gloria L. Heussaf! December 26, 2025. RSVP, view our gallery, and leave a message! #SineadGloriaLHeussafDebut",
-    images: ["https://SineadGloriaLHeussafDebut.vercel.app/Details/image.png"],
+      "You're invited to the debut of Sinead Gloria L. Heussaf! December 26, 2025. RSVP, view our gallery, and leave a message! #sinead-gloria-debut-invitation",
+    images: ["https://sinead-gloria-debut-invitation.vercel.app/Details/image.png"],
     creator: "@sineadglorialheussaf",
   },
   robots: {
@@ -120,7 +120,7 @@ export const metadata: Metadata = {
           },
         },
       ],
-      image: ["https://SineadGloriaLHeussafDebut.vercel.app/Details/image.png"],
+      image: ["https://sinead-gloria-debut-invitation.vercel.app/Details/image.png"],
       description:
         "You're invited to the debut of Sinead Gloria L. Heussaf! Join us on December 26, 2025 at Grandballroom Hall, Sugarland Hotel, Araneta Street, Barangay Singcang, Bacolod City, Negros Occidental. RSVP, read our love story, view our gallery, and leave a message for the couple.",
       organizer: {
@@ -129,12 +129,12 @@ export const metadata: Metadata = {
       },
       offers: {
         "@type": "Offer",
-        url: "https://SineadGloriaLHeussafDebut.vercel.app/",
+        url: "https://sinead-gloria-debut-invitation.vercel.app/",
         availability: "https://schema.org/InStock",
         price: "0",
         priceCurrency: "PHP",
       },
-            eventHashtag: "#SineadGloriaLHeussafDebut",
+            eventHashtag: "#sinead-gloria-debut-invitation",
     }),
   },
 }

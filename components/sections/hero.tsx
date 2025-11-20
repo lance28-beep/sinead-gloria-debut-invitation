@@ -61,7 +61,7 @@ export function Hero() {
 
       {/* Photo leaf asset top-left */}
       <div
-        className="absolute top-0 left-0 pointer-events-none z-[15] w-[200px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[200px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
+        className="absolute top-0 left-0 pointer-events-none z-[15] w-[120px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[120px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
         style={{ transform: `scaleX(-1) translateX(${topLeftOffset}px)` }}
       >
         <Image
@@ -75,7 +75,7 @@ export function Hero() {
 
       {/* Photo leaf asset top-right */}
       <div
-        className="absolute top-0 right-0 pointer-events-none z-[15] w-[200px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[200px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
+        className="absolute top-0 right-0 pointer-events-none z-[15] w-[120px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[120px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
         style={{ transform: `translateX(${topRightOffset}px)` }}
       >
         <Image
@@ -145,7 +145,7 @@ export function Hero() {
       {/* Main Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
         {/* JOIN US FOR A ONE HOT */}
-        <div className="relative z-[20] mb-6 sm:mb-8">
+        <div className="relative z-[35] mb-6 sm:mb-8">
           <p className="text-xs sm:text-sm md:text-base lg:text-lg font-[family-name:var(--font-crimson)] font-semibold text-white uppercase tracking-[0.25em] sm:tracking-[0.3em] drop-shadow-lg">
             Join us for a one hot
           </p>

@@ -180,6 +180,20 @@ html {
   animation: shimmer 2s infinite;
 }
 
+/* Marquee animation for debutant photos - moving right */
+@keyframes marquee {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
 /* Anton font class */
 .anton-regular {
   font-family: "Anton", sans-serif;

@@ -3,10 +3,11 @@
 import dynamic from "next/dynamic"
 import { Hero } from "@/components/sections/hero"
 import { Countdown } from "@/components/sections/countdown"
+import { DebutantMarquee } from "@/components/sections/debutant-marquee"
 import { Messages } from "@/components/sections/messages"
 import { Details } from "@/components/sections/details"
 import { Entourage } from "@/components/sections/entourage"
-import { PrincipalSponsors } from "@/components/sections/principal-sponsors"
+// import { PrincipalSponsors } from "@/components/sections/principal-sponsors"
 import { BookOfGuests } from "@/components/sections/book-of-guests"
 import { FAQ } from "@/components/sections/faq"
 import { SnapShare } from "@/components/sections/snap-share"
@@ -25,10 +26,11 @@ export default function Home() {
       <div className="relative z-10">
         <Hero />
         <Countdown />
+        <DebutantMarquee />
         <Messages />
         <Details />
         <Entourage />
-        <PrincipalSponsors />
+        {/* <PrincipalSponsors /> */}
         <GuestList />
         <BookOfGuests />
         <FAQ />

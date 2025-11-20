@@ -333,6 +333,35 @@ export function SnapShare() {
             </div>
           </div>
         </motion.div>
+
+        {/* Hashtags Section */}
+        <motion.div
+          className="text-center mt-8 sm:mt-10 md:mt-12 pb-8 sm:pb-10 md:pb-12"
+          variants={fadeInUp}
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+        >
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-5">
+            <a
+              href="https://www.instagram.com/explore/tags/SineadsHavanaSoirée18/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FDDBB2] hover:text-white transition-colors text-sm sm:text-base md:text-lg font-[family-name:var(--font-inter)] tracking-wide"
+            >
+              #SineadsHavanaSoirée18
+            </a>
+            <span className="text-white/40">•</span>
+            <a
+              href="https://www.instagram.com/explore/tags/SineadGlowsInHavana/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#FDDBB2] hover:text-white transition-colors text-sm sm:text-base md:text-lg font-[family-name:var(--font-inter)] tracking-wide"
+            >
+              #SineadGlowsInHavana
+            </a>
+          </div>
+        </motion.div>
       </div>
     </Section>
   );

@@ -5,7 +5,7 @@ import Image from "next/image"
 import { Section } from "@/components/section"
 
 const EVENT_FACTS = [
-  { label: "Event Type", value: "Debut – All In Package" },
+  { label: "Event Type", value: "debut" },
   { label: "Event Date", value: "December 26, 2025" },
   { label: "Event Time", value: "6:00 PM – 10:00 PM" },
   { label: "Venue", value: "Grandballroom Hall, Sugarland Hotel" },
@@ -103,7 +103,7 @@ export function Details() {
         <div className="grid gap-6 sm:gap-8 md:grid-cols-2 md:gap-10 items-stretch">
           <div className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.6)] min-h-[200px] sm:min-h-[260px] md:min-h-[360px]">
             <Image
-              src="/Details/ SugarlandHotel.jpg"
+              src="/gallery/granballroom.png"
               alt="Grandballroom Hall, Sugarland Hotel"
               width={900}
               height={900}
@@ -155,6 +155,48 @@ export function Details() {
                 </svg>
                 Copy Address
               </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Dress Code Section */}
+        <div className="mt-12 sm:mt-14 md:mt-16 lg:mt-20">
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <h3 className="fugaz-one-regular text-lg sm:text-xl md:text-2xl lg:text-3xl text-white tracking-[0.08em] sm:tracking-[0.1em] uppercase">
+              Dress Code: Noche de Havana
+            </h3>
+          </div>
+          
+          <div className="grid gap-6 sm:gap-8 md:grid-cols-2 md:gap-10 items-stretch">
+            {/* Dress Code Info */}
+            <div className="rounded-xl sm:rounded-2xl md:rounded-3xl border border-white/12 bg-white/5 backdrop-blur-lg p-4 sm:p-5 md:p-6 lg:p-8 shadow-[0_25px_60px_rgba(0,0,0,0.45)] flex flex-col gap-4 sm:gap-5 md:gap-6">
+              <div className="space-y-4 sm:space-y-5 md:space-y-6">
+                <div className="border-b border-white/10 pb-4 sm:pb-5">
+                  <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.35em] text-[#FDDBB2]/70 mb-2 sm:mb-3">Female</p>
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-[family-name:var(--font-inter)] leading-snug">
+                    Flowy outfits, warm hues, tropical chic
+                  </p>
+                </div>
+                <div className="pb-0">
+                  <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.35em] text-[#FDDBB2]/70 mb-2 sm:mb-3">Male</p>
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-[family-name:var(--font-inter)] leading-snug">
+                    Simple linen top, earth-tone bottoms, clean casual shoes
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Attire Guidelines Image */}
+            <div className="relative rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 shadow-[0_25px_60px_rgba(0,0,0,0.6)] min-h-[200px] sm:min-h-[260px] md:min-h-[360px]">
+              <Image
+                src="/gallery/attire guidelines.png"
+                alt="Attire Guidelines"
+                width={900}
+                height={900}
+                className="h-full w-full object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             </div>
           </div>
         </div>
