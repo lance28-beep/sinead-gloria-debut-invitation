@@ -35,7 +35,7 @@ const BackgroundMusic = () => {
     <audio
       ref={audioRef}
       src={encodeURI(
-        "/background_music+/Kina Grannis ft. Imaginary Future - I Will Spend My Whole Life Loving You (lyrics).mp3",
+        "/background_music/Kina Grannis ft. Imaginary Future - I Will Spend My Whole Life Loving You (lyrics).mp3",
       )}
       loop
       preload="auto"

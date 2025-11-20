@@ -941,18 +941,16 @@ export default function DashboardPage() {
                   fetchPrincipalSponsors()
                 }}
                 disabled={isLoading}
-                variant="outline"
                 size="sm"
-                className="border-[#FD9210]/30 text-white hover:bg-[#FD9210]/10 font-[family-name:var(--font-inter)]"
+                className="bg-[#FD9210] hover:bg-[#FD9210]/90 text-white border border-[#FD9210] font-[family-name:var(--font-inter)] shadow-sm"
               >
                 <RefreshCw className={`h-4 w-4 mr-1 ${isLoading ? 'animate-spin' : ''}`} />
                 Refresh
               </Button>
               <Button
                 onClick={handleLogout}
-                variant="outline"
                 size="sm"
-                className="border-[#FD9210]/30 text-white hover:bg-[#FD9210]/10 font-[family-name:var(--font-inter)]"
+                className="bg-[#6A391B] hover:bg-[#6A391B]/90 text-white border border-[#6A391B] font-[family-name:var(--font-inter)] shadow-sm"
               >
                 <Lock className="h-4 w-4 mr-1" />
                 Logout
