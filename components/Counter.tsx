@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useSpring, useTransform, MotionValue } from "motion/react"
-import { useEffect } from "react"
+import React, { useEffect } from "react"
+import { MotionValue, motion, useSpring, useTransform } from "motion/react"
 
 interface NumberProps {
   mv: MotionValue<number>
@@ -10,7 +10,7 @@ interface NumberProps {
 }
 
 function Number({ mv, number, height }: NumberProps) {
-  const y = useTransform(mv, (latest: number) => {
+  const y = useTransform(mv, latest => {
     const placeValue = latest % 10
     const offset = (10 + number - placeValue) % 10
     let memo = offset * height
@@ -43,19 +43,14 @@ interface DigitProps {
 
 function Digit({ place, value, height, digitStyle }: DigitProps) {
   const valueRoundedToPlace = Math.floor(value / place)
-  const animatedValue = useSpring(valueRoundedToPlace, {
-    stiffness: 400,
-    damping: 40,
-    mass: 1,
-  })
+  const animatedValue = useSpring(valueRoundedToPlace)
 
   useEffect(() => {
     animatedValue.set(valueRoundedToPlace)
   }, [animatedValue, valueRoundedToPlace])
 
   const defaultStyle: React.CSSProperties = {
-    height: "100%",
-    minHeight: height,
+    height,
     position: "relative",
     width: "1ch",
     fontVariantNumeric: "tabular-nums",
@@ -79,7 +74,7 @@ interface CounterProps {
   borderRadius?: number
   horizontalPadding?: number
   textColor?: string
-  fontWeight?: string | number
+  fontWeight?: React.CSSProperties["fontWeight"]
   containerStyle?: React.CSSProperties
   counterStyle?: React.CSSProperties
   digitStyle?: React.CSSProperties
@@ -117,16 +112,16 @@ export default function Counter({
   }
 
   const defaultCounterStyle: React.CSSProperties = {
-    fontSize: `clamp(${fontSize * 0.7}px, 5vw, ${fontSize}px)`,
+    fontSize,
     display: "flex",
-    gap: gap,
+    gap,
     overflow: "hidden",
-    borderRadius: borderRadius,
+    borderRadius,
     paddingLeft: horizontalPadding,
     paddingRight: horizontalPadding,
     lineHeight: 1,
     color: textColor,
-    fontWeight: fontWeight,
+    fontWeight,
   }
 
   const gradientContainerStyle: React.CSSProperties = {
@@ -154,7 +149,7 @@ export default function Counter({
   return (
     <div style={{ ...defaultContainerStyle, ...containerStyle }}>
       <div style={{ ...defaultCounterStyle, ...counterStyle }}>
-        {places.map((place) => (
+        {places.map(place => (
           <Digit key={place} place={place} value={value} height={height} digitStyle={digitStyle} />
         ))}
       </div>
@@ -165,3 +160,4 @@ export default function Counter({
     </div>
   )
 }
+

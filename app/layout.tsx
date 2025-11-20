@@ -20,25 +20,24 @@ const ephesis = Ephesis({
 })
 
 export const metadata: Metadata = {
-  title: "Marvin & Annie - Wedding Invitation",
+  title: "Sinead Gloria L. Heussaf - Debut Invitation",
   description:
-    "You're invited to the wedding of Marvin & Annie! Join us on March 14, 2026 in Iloilo Convention Center. RSVP, read our love story, view our gallery, and leave a message for the couple.",
+    "You're invited to the debut of Sinead Gloria L. Heussaf! Join us on December 26, 2025 at Grandballroom Hall, Sugarland Hotel, Araneta Street, Barangay Singcang, Bacolod City, Negros Occidental. RSVP, read our love story, view our gallery, and leave a message for the couple.",
   keywords:
-    "Marvin & Annie wedding, Filipino wedding, RSVP, wedding gallery, wedding message wall, wedding invitation, 2026 weddings, love story, guestbook, wedding registry, wedding details, wedding venues Iloilo Convention Center, #MarvinAndAnnieWedding",
+    "Sinead Gloria L. Heussaf debut, Filipino debut, RSVP, debut gallery, debut message wall, debut invitation, 2025 debuts, love story, guestbook, debut registry, debut details, debut venues Grandballroom Hall, Sugarland Hotel, #SineadGloriaLHeussafDebut",
   authors: [
-    { name: "Marvin" },
-    { name: "Annie" },
+    { name: "Sinead Gloria L. Heussaf" },
   ],
-  creator: "Marvin & Annie",
-  publisher: "Marvin & Annie",
+  creator: "Sinead Gloria L. Heussaf",
+  publisher: "Sinead Gloria L. Heussaf",
   formatDetection: {
     email: false,
     address: false,
     telephone: true,
   },
-  metadataBase: new URL("https://Marvin-and-Annie-invitation.vercel.app/"),
+  metadataBase: new URL("https://SineadGloriaLHeussafDebut.vercel.app/"),
   alternates: {
-    canonical: "https://Marvin-and-Annie-invitation.vercel.app/",
+    canonical: "https://SineadGloriaLHeussafDebut.vercel.app/",
   },
   icons: {
     icon: [
@@ -60,29 +59,29 @@ export const metadata: Metadata = {
   },
   manifest: "/favicon_io/site.webmanifest",
   openGraph: {
-    title: "Marvin & Annie Wedding | March 14, 2026",
+      title: "Sinead Gloria L. Heussaf Debut | December 26, 2025",
     description:
-      "Celebrate the union of Marvin & Annie on March 14, 2026 in Iloilo Convention Center. Discover our love story, RSVP, view the gallery, and leave your wishes!",
-    url: "https://Marvin-and-Annie-invitation.vercel.app/",
-    siteName: "Marvin and Annie Wedding ",
+      "Celebrate the debut of Sinead Gloria L. Heussaf on December 26, 2025 at Grandballroom Hall, Sugarland Hotel, Araneta Street, Barangay Singcang, Bacolod City, Negros Occidental. Discover our love story, RSVP, view the gallery, and leave your wishes!",
+    url: "https://SineadGloria-debut-invitation.vercel.app/",
+    siteName: "Sinead Gloria L. Heussaf Debut ",
     locale: "en_PH",
     type: "website",
     images: [
       {
-        url: "https://Marvin-and-Annie-invitation.vercel.app/Details/image.png",
+        url: "https://SineadGloriaLHeussafDebut.vercel.app/Details/image.png",
         width: 1200,
         height: 630,
-        alt: "Marvin & Annie Wedding Invitation - March 14, 2026",
+        alt: "Sinead Gloria L. Heussaf Debut Invitation - December 26, 2025",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marvin & Annie Wedding Invitation",
+    title: "Sinead Gloria L. Heussaf Debut Invitation",
     description:
-      "You're invited to the wedding of Marvin & Annie! March 14, 2026. RSVP, view our gallery, and leave a message! #MarvinAndAnnieWedding",
-    images: ["https://Marvin-and-Annie-invitation.vercel.app/Details/image.png"],
-    creator: "@marvinandannie",
+      "You're invited to the debut of Sinead Gloria L. Heussaf! December 26, 2025. RSVP, view our gallery, and leave a message! #SineadGloriaLHeussafDebut",
+    images: ["https://SineadGloriaLHeussafDebut.vercel.app/Details/image.png"],
+    creator: "@sineadglorialheussaf",
   },
   robots: {
     index: true,
@@ -102,7 +101,7 @@ export const metadata: Metadata = {
     "application/ld+json": JSON.stringify({
       "@context": "https://schema.org",
       "@type": "Event",
-      name: "Marvin & Annie Wedding",
+      name: "Sinead Gloria L. Heussaf Debut",
       startDate: "2026-02-14T14:00:00+08:00",
       endDate: "2026-02-14T22:00:00+08:00",
       eventStatus: "https://schema.org/EventScheduled",
@@ -110,32 +109,32 @@ export const metadata: Metadata = {
       location: [
         {
           "@type": "Place",
-          name: "Iloilo Convention Center",
+          name: "Grandballroom Hall, Sugarland Hotel",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "M.J. Cuenco Avenue, Brgy. Mandurriao, Iloilo City",
-            addressLocality: "Iloilo City",
-            addressRegion: "Iloilo",
+            streetAddress: "Araneta Street, Brgy. Singcang, Bacolod City",
+            addressLocality: "Bacolod City",
+            addressRegion: "Negros Occidental",
             postalCode: "5000",
             addressCountry: "PH",
           },
         },
       ],
-      image: ["https://Marvin-and-Annie-invitation.vercel.app/Details/image.png"],
+      image: ["https://SineadGloriaLHeussafDebut.vercel.app/Details/image.png"],
       description:
-        "You're invited to the wedding of Marvin & Annie! Join us on March 14, 2026 in Iloilo Convention Center. RSVP, read our love story, view our gallery, and leave a message for the couple.",
+        "You're invited to the debut of Sinead Gloria L. Heussaf! Join us on December 26, 2025 at Grandballroom Hall, Sugarland Hotel, Araneta Street, Barangay Singcang, Bacolod City, Negros Occidental. RSVP, read our love story, view our gallery, and leave a message for the couple.",
       organizer: {
         "@type": "Person",
-        name: "Marvin & Annie",
+        name: "Sinead Gloria L. Heussaf",
       },
       offers: {
         "@type": "Offer",
-        url: "https://Marvin-and-Annie-invitation.vercel.app/",
+        url: "https://SineadGloriaLHeussafDebut.vercel.app/",
         availability: "https://schema.org/InStock",
         price: "0",
         priceCurrency: "PHP",
       },
-        eventHashtag: "#MarvinAndAnnieWedding",
+            eventHashtag: "#SineadGloriaLHeussafDebut",
     }),
   },
 }
@@ -150,7 +149,10 @@ export default function RootLayout({
       <head>
         <meta name="theme-color" content="#0A3428" />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=WindSong:wght@400;500&display=swap" rel="stylesheet" />
         <link rel="preload" as="image" href="/mobile-background/DSCF2614-min.jpg" media="(max-width: 767px)" />
         <link rel="preload" as="image" href="/desktop-background/DSCF2444-min.jpg" media="(min-width: 768px)" />
       </head>

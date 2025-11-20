@@ -11,6 +11,9 @@ importers:
       '@emotion/is-prop-valid':
         specifier: latest
         version: 1.4.0
+      '@fontsource/stack-sans-text':
+        specifier: ^5.2.1
+        version: 5.2.1
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.65.0(react@19.2.0))
@@ -1054,6 +1057,9 @@ packages:
 
   '@floating-ui/utils@0.2.10':
     resolution: {integrity: sha512-aGTxbpbg8/b5JfU1HXSrbH3wXZuLPJcNEcZQFMxLs3oSzgtVu6nFPkbbGGUvBcUjKV2YyB9Wxxabo+HEH9tcRQ==}
+
+  '@fontsource/stack-sans-text@5.2.1':
+    resolution: {integrity: sha512-ir7IsU6RGo9XOmRBnCdNzSLWAqdOl2Gdab63khjK8w9kN900OmOn3ebXj0bWf1wLQx1hTSpJnJMlB1ijBaH0lw==}
 
   '@formatjs/ecma402-abstract@2.3.6':
     resolution: {integrity: sha512-HJnTFeRM2kVFVr5gr5kH1XP6K0JcJtE7Lzvtr3FS/so5f1kpsqqqxy5JF+FRaO6H2qmcMfAUIox7AJteieRtVw==}
@@ -6794,6 +6800,8 @@ snapshots:
       react-dom: 19.2.0(react@19.2.0)
 
   '@floating-ui/utils@0.2.10': {}
+
+  '@fontsource/stack-sans-text@5.2.1': {}
 
   '@formatjs/ecma402-abstract@2.3.6':
     dependencies:

@@ -1,6 +1,5 @@
 "use client"
 
-import { Suspense } from "react"
 import dynamic from "next/dynamic"
 import { Hero } from "@/components/sections/hero"
 import { Countdown } from "@/components/sections/countdown"
@@ -9,13 +8,11 @@ import { Details } from "@/components/sections/details"
 import { Entourage } from "@/components/sections/entourage"
 import { PrincipalSponsors } from "@/components/sections/principal-sponsors"
 import { BookOfGuests } from "@/components/sections/book-of-guests"
-import { Registry } from "@/components/sections/registry"
 import { FAQ } from "@/components/sections/faq"
 import { SnapShare } from "@/components/sections/snap-share"
 import { Footer } from "@/components/sections/footer"
 import BackgroundMusic from "@/components/background-music"
 
-const Silk = dynamic(() => import("@/components/silk"), { ssr: false })
 const GuestList = dynamic(() => import("@/components/sections/guest-list").then(mod => ({ default: mod.GuestList })), { ssr: false })
 
 export default function Home() {
@@ -24,15 +21,6 @@ export default function Home() {
   return (
     <main className="relative">
       {enableDecor && <BackgroundMusic />}
-      {/* Silk Background Animation */}
-      {enableDecor && (
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <Suspense fallback={<div className="w-full h-full bg-[#E8DCC8]" />}>
-            <Silk speed={3} scale={1.2} color="#E8DCC8" noiseIntensity={0.5} rotation={0.2} />
-          </Suspense>
-        </div>
-      )}
-
       {/* Content */}
       <div className="relative z-10">
         <Hero />
@@ -43,7 +31,6 @@ export default function Home() {
         <PrincipalSponsors />
         <GuestList />
         <BookOfGuests />
-        <Registry />
         <FAQ />
         <SnapShare />
         <Footer />

@@ -1,195 +1,217 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
+import Image from "next/image"
 import { Section } from "@/components/section"
-import Counter from "@/components/counter"
+import Counter from "@/components/Counter"
 
-interface TimeLeft {
+const EVENT_START = "2025-12-26T18:00:00+08:00"
+
+type TimeBreakdown = {
   days: number
   hours: number
   minutes: number
   seconds: number
 }
 
+function getTimeBreakdown(targetTime: number): TimeBreakdown {
+  const now = Date.now()
+  const clampedDiff = Math.max(targetTime - now, 0)
+  const days = Math.floor(clampedDiff / (1000 * 60 * 60 * 24))
+  const hours = Math.floor((clampedDiff / (1000 * 60 * 60)) % 24)
+  const minutes = Math.floor((clampedDiff / (1000 * 60)) % 60)
+  const seconds = Math.floor((clampedDiff / 1000) % 60)
+  return { days, hours, minutes, seconds }
+}
+
 export function Countdown() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  })
+  const targetTime = useMemo(() => new Date(EVENT_START).getTime(), [])
+  const [timeLeft, setTimeLeft] = useState<TimeBreakdown>(() => getTimeBreakdown(targetTime))
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      // Target: March 14, 2026 at 2:00 PM GMT+8
-      // Compute using UTC to avoid timezone parsing inconsistencies across browsers
-      // 2:00 PM GMT+8 == 06:00 AM UTC
-      const targetDate = Date.UTC(2026, 2, 14, 6, 0, 0) // March is month 2 (0-indexed)
-      const now = new Date().getTime()
-      const difference = targetDate - now
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        })
-      } else {
-        // Wedding has passed or is happening now
-        setTimeLeft({
-          days: 0,
-          hours: 0,
-          minutes: 0,
-          seconds: 0,
-        })
-      }
-    }
-
-    calculateTimeLeft()
-    const timer = setInterval(calculateTimeLeft, 1000)
+    const timer = setInterval(() => {
+      setTimeLeft(getTimeBreakdown(targetTime))
+    }, 1000)
     return () => clearInterval(timer)
-  }, [])
+  }, [targetTime])
 
-  const CountdownUnit = ({ value, label }: { value: number; label: string }) => (
-    <div className="flex flex-col items-center gap-3 sm:gap-4">
-      {/* Simple, elegant card */}
-      <div className="relative group">
-        {/* Subtle glow on hover */}
-        <div className="absolute -inset-1 bg-gradient-to-br from-[#1A1A1A]/20 to-[#1A1A1A]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
-        
-        {/* Main card */}
-        <div className="relative bg-white backdrop-blur-sm rounded-xl sm:rounded-2xl px-3 py-4 sm:px-5 sm:py-5 md:px-6 md:py-6 lg:px-8 lg:py-7 border-2 border-[#1A1A1A]/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#1A1A1A]/60 min-w-[65px] sm:min-w-[75px] md:min-w-[90px] lg:min-w-[100px]">
-          {/* Counter */}
-          <div className="relative z-10 flex items-center justify-center">
-            <Counter
-              value={value}
-              places={value >= 100 ? [100, 10, 1] : [10, 1]}
-              fontSize={36}
-              padding={6}
-              gap={3}
-              textColor="#1A1A1A"
-              fontWeight={700}
-              borderRadius={8}
-              horizontalPadding={4}
-              gradientHeight={10}
-              gradientFrom="rgba(26,26,26,0.08)"
-              gradientTo="transparent"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Simple label */}
-      <span className="text-xs sm:text-sm font-[family-name:var(--font-crimson)] font-semibold text-[#1A1A1A] uppercase tracking-wider drop-shadow-sm">
-        {label}
-      </span>
-    </div>
-  )
+  const segments: { label: string; value: number; places: number[] }[] = [
+    {
+      label: "Days",
+      value: timeLeft.days,
+      places: [10, 1],
+    },
+    {
+      label: "Hours",
+      value: timeLeft.hours,
+      places: [10, 1],
+    },
+    {
+      label: "Minutes",
+      value: timeLeft.minutes,
+      places: [10, 1],
+    },
+    {
+      label: "Seconds",
+      value: timeLeft.seconds,
+      places: [10, 1],
+    },
+  ]
 
   return (
     <Section
       id="countdown"
-      className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-[#E8DCC8]/50"
+      className="relative overflow-hidden bg-[#3D2817]"
     >
-      {/* Semi-transparent overlay for better text readability */}
-      <div className="absolute inset-0 bg-white/40 backdrop-blur-sm pointer-events-none" />
-      
-      {/* Header */}
-      <div className="relative z-10 text-center mb-12 sm:mb-16 md:mb-20 px-4 sm:px-6">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-crimson)] font-normal text-[#1A1A1A] mb-6 sm:mb-8 uppercase tracking-[0.12em] sm:tracking-[0.15em] drop-shadow-sm">
-          Countdown to Our Special Day
-        </h2>
-        
-        <p className="text-base sm:text-lg md:text-xl font-[family-name:var(--font-crimson)] text-[#1A1A1A] font-light max-w-xl mx-auto leading-relaxed tracking-wide drop-shadow-sm px-4">
-          Every moment brings us closer to forever
-        </p>
-      </div>
+      <>
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-60"
+          style={{ backgroundImage: "url('/havana/woodbackground.png')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1B0D05]/95 via-[#3D2817]/85 to-[#1B0D05]/95" />
 
-      {/* Main countdown container */}
-      <div className="relative z-10">
-        <div className="flex justify-center items-center gap-3 sm:gap-4 md:gap-5 lg:gap-7 mb-12 sm:mb-16 md:mb-20 flex-wrap px-4 sm:px-6">
-          <CountdownUnit value={timeLeft.days} label="Days" />
-          <CountdownUnit value={timeLeft.hours} label="Hours" />
-          <CountdownUnit value={timeLeft.minutes} label="Minutes" />
-          <CountdownUnit value={timeLeft.seconds} label="Seconds" />
+        {/* Photo leaf asset top-right */}
+        <div
+          className="absolute top-0 right-0 pointer-events-none z-[5] w-[450px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[450px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
+        >
+          <Image
+            src="/havana/leaf.png"
+            alt="Tropical leaf top right"
+            fill
+            className="object-contain object-right-top"
+            priority
+          />
         </div>
 
-        {/* Wedding date presentation - Save The Date Card Style */}
-        <div className="flex justify-center px-4 sm:px-6">
-          <div className="max-w-2xl w-full">
-            {/* Save The Date Header */}
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
-              {/* Top decorative line */}
-              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-                <div className="w-1.5 h-1.5 bg-[#1A1A1A]/60 rounded-full" />
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-              </div>
-              
-              {/* Save The Date text */}
-              <p className="text-xs sm:text-sm md:text-base font-[family-name:var(--font-crimson)] font-bold text-[#1A1A1A] uppercase tracking-[0.2em] sm:tracking-[0.3em] mb-4 sm:mb-5">
-                Save The Date
+        {/* Photo leaf asset top-left */}
+        <div
+          className="absolute top-0 left-0 pointer-events-none z-[5] w-[450px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[450px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
+          style={{ transform: "scaleX(-1)" }}
+        >
+          <Image
+            src="/havana/leaf.png"
+            alt="Tropical leaf top left"
+            fill
+            className="object-contain object-left-top"
+            priority
+          />
+        </div>
+
+        {/* Hill asset bottom-right (behind hill3) */}
+        <div
+          className="absolute bottom-0 right-0 pointer-events-none z-[1] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]"
+        >
+          <Image
+            src="/havana/hill5.png"
+            alt="Hill bottom right background"
+            fill
+            className="object-contain object-right-bottom"
+            priority
+          />
+        </div>
+
+        {/* Hill asset bottom-right */}
+        <div
+          className="absolute bottom-0 right-0 pointer-events-none z-[15] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]"
+        >
+          <Image
+            src="/havana/hill3.png"
+            alt="Hill bottom right"
+            fill
+            className="object-contain object-right-bottom"
+            priority
+          />
+        </div>
+
+        {/* Hill asset bottom-left */}
+        <div
+          className="absolute bottom-0 left-0 pointer-events-none z-[15] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]"
+        >
+          <Image
+            src="/havana/hill4.png"
+            alt="Hill bottom left"
+            fill
+            className="object-contain object-left-bottom"
+            priority
+          />
+        </div>
+
+        <div className="relative z-20 text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-3 sm:px-4 md:px-6">
+          <p className="text-[0.65rem] sm:text-xs md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] text-white/80 mb-2 sm:mb-3">
+            Havana Lights Countdown
+          </p>
+          <h2 className="fugaz-one-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white tracking-[0.12em] sm:tracking-[0.15em] md:tracking-[0.18em] uppercase drop-shadow-[0_5px_15px_rgba(0,0,0,0.7)]">
+            The Night ignites in
+          </h2>
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 max-w-2xl mx-auto mt-3 sm:mt-4 leading-relaxed px-2">
+            Every second brings us closer to Sinead's Havana Nights debut.
+          </p>
+        </div>
+
+        <div className="relative z-20">
+          <div className="relative z-20 max-w-3xl mx-auto bg-[#1B0D05]/70 border border-[#FD9210]/40 rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.65)] px-3 sm:px-4 md:px-6">
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-3 mb-4 sm:mb-5 md:mb-6 text-[#54A658] uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.35em] text-[0.65rem] sm:text-xs md:text-sm">
+              <span className="h-px w-6 sm:w-8 md:w-10 bg-[#54A658]/60" />
+              Save the Date
+              <span className="h-px w-6 sm:w-8 md:w-10 bg-[#54A658]/60" />
+            </div>
+            <div className="text-white text-center mb-6 sm:mb-8 md:mb-10">
+              <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[family-name:var(--font-ephesis)] drop-shadow-lg">
+                December
               </p>
-              
-              {/* Bottom decorative line */}
-              <div className="flex items-center justify-center gap-3 sm:gap-4">
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-                <div className="w-1.5 h-1.5 bg-[#1A1A1A]/60 rounded-full" />
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
+              <div className="flex items-center justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 mt-4 sm:mt-5 md:mt-6">
+                <p className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-[family-name:var(--font-crimson)] text-[#FD9210] drop-shadow-[0_10px_25px_rgba(0,0,0,0.6)]">
+                  26
+                </p>
+                <div className="w-0.5 h-16 sm:h-20 md:h-24 lg:h-28 bg-white/30" />
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-[family-name:var(--font-crimson)] text-white">
+                  2025
+                </p>
+              </div>
+              <p className="mt-4 sm:mt-5 md:mt-6 text-sm sm:text-base md:text-lg lg:text-xl tracking-[0.3em] sm:tracking-[0.35em] md:tracking-[0.4em] uppercase text-[#54A658]">
+                6PM — 10PM
+              </p>
+            </div>
+            <div className="mt-6 sm:mt-8 md:mt-10 lg:mt-12">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5">
+                {segments.map(segment => (
+                  <div
+                    key={segment.label}
+                    className="flex flex-col items-center gap-2 sm:gap-3 rounded-xl sm:rounded-2xl border border-white/15 bg-white/5 px-3 sm:px-4 py-3 sm:py-4 md:py-5 text-center shadow-[0_10px_25px_rgba(0,0,0,0.35)] backdrop-blur-sm"
+                  >
+                    <Counter
+                      value={segment.value}
+                      places={segment.places}
+                      fontSize={36}
+                      padding={6}
+                      gap={12}
+                      borderRadius={18}
+                      horizontalPadding={12}
+                      textColor="white"
+                      fontWeight={800}
+                      counterStyle={{
+                        fontFamily: '"Stack Sans Text", sans-serif',
+                        letterSpacing: "0.08em",
+                        fontSize: "clamp(28px, 5vw, 48px)",
+                      }}
+                      gradientHeight={20}
+                      gradientFrom="rgba(24,13,5,0.95)"
+                      gradientTo="transparent"
+                    />
+                    <p className="text-[0.65rem] sm:text-xs md:text-sm uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.35em] text-[#FD9210]/90">
+                      {segment.label}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
-
-            {/* Date Section - Elegant Layout */}
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
-              {/* Month - Script style like "and" in hero */}
-              <div className="mb-5 sm:mb-6 md:mb-8">
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-ephesis)] text-[#1A1A1A] leading-none drop-shadow-sm">
-                  March
-                </p>
-              </div>
-              
-              {/* Day and Year - Horizontal layout with divider */}
-              <div className="flex items-center justify-center gap-4 sm:gap-5 md:gap-7 mb-8 sm:mb-10">
-                {/* Day - Large and bold focal point */}
-                <p className="text-7xl sm:text-8xl md:text-9xl lg:text-[10rem] xl:text-[12rem] font-[family-name:var(--font-crimson)] font-normal text-[#1A1A1A] leading-none drop-shadow-md">
-                  14
-                </p>
-                
-                {/* Vertical divider */}
-                <div className="h-16 sm:h-20 md:h-24 lg:h-28 w-0.5 bg-[#1A1A1A]/50" />
-                
-                {/* Year - Elegant and refined */}
-                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-crimson)] font-normal text-[#1A1A1A] leading-none drop-shadow-sm">
-                  2026
-                </p>
-              </div>
-            </div>
-
-            {/* Time Section */}
-            <div className="text-center">
-              {/* Top decorative line */}
-              <div className="flex items-center justify-center gap-3 sm:gap-4 mb-4 sm:mb-5">
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-                <div className="w-1.5 h-1.5 bg-[#1A1A1A]/60 rounded-full" />
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-              </div>
-              
-              {/* Time */}
-              <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-[family-name:var(--font-crimson)] font-semibold text-[#1A1A1A] tracking-wide mb-4 sm:mb-5 drop-shadow-sm">
-                2 O'CLOCK
-              </p>
-              
-              {/* Bottom decorative line */}
-              <div className="flex items-center justify-center gap-3 sm:gap-4">
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-                <div className="w-1.5 h-1.5 bg-[#1A1A1A]/60 rounded-full" />
-                <div className="h-px w-10 sm:w-14 md:w-20 bg-[#1A1A1A]/50" />
-              </div>
+            <div className="flex flex-col items-center gap-1.5 sm:gap-2 text-white/80 uppercase tracking-[0.2em] sm:tracking-[0.25em] text-[0.65rem] sm:text-xs md:text-sm mt-4 sm:mt-5 md:mt-6">
+              <span>Grandballroom Hall</span>
+              <span>Sugarland Hotel</span>
             </div>
           </div>
         </div>
-      </div>
+      </>
     </Section>
   )
 }

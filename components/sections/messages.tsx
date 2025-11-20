@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState, useCallback, useEffect } from "react"
-import { MessageCircle, Heart, Sparkles, Send } from "lucide-react"
+import { MessageCircle, Heart, Sparkles } from "lucide-react"
 import { Section } from "@/components/section"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -45,7 +45,7 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
 
     try {
       await fetch(
-        "https://docs.google.com/forms/d/e/1FAIpQLSfcKAlO0Cw52hNuZQOLV_gQE8rU7DrElCQfa_gIoWv90rxBRQ/formResponse",
+        "https://docs.google.com/forms/d/e/1FAIpQLSeLdBTJcwHsz29X4W_6ft-f1GIpTuxor9AM4rijsehUXeKZnQ/formResponse",
         {
           method: "POST",
           mode: "no-cors",
@@ -82,107 +82,118 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
   }
 
   return (
-    <div className="relative w-full max-w-lg mx-auto px-4 sm:px-0">
+    <div className="relative w-full max-w-md sm:max-w-lg mx-auto px-3 sm:px-0">
       {/* Clean decorative background elements */}
-      <div className="absolute -top-3 -left-3 w-6 h-6 bg-[#3C3C3C]/10 rounded-full blur-sm sm:w-8 sm:h-8 sm:-top-4 sm:-left-4"></div>
-      <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-[#3C3C3C]/8 rounded-full blur-md sm:w-10 sm:h-10 sm:-bottom-4 sm:-right-4"></div>
-      
-      <Card className={`relative w-full border-2 border-[#3C3C3C]/25 shadow-lg bg-white/90 backdrop-blur-sm transition-all duration-300 overflow-hidden rounded-xl ${
-        isFocused ? 'border-[#3C3C3C]/40 bg-white/95' : 'hover:border-[#3C3C3C]/35'
-      } ${isSubmitted ? 'animate-bounce' : ''}`}>
+      {/* <div className="absolute -top-4 -left-6 h-16 w-16 bg-[#FD9210]/25 blur-3xl rounded-full" />
+      <div className="absolute -bottom-6 -right-6 h-20 w-20 bg-[#54A658]/25 blur-3xl rounded-full" /> */}
+
+      <Card
+        className={`relative w-full border border-white/20 bg-gradient-to-br from-[#1C0D05]/95 via-[#1A0C04]/85 to-[#120902]/90 backdrop-blur-md shadow-[0_20px_60px_rgba(0,0,0,0.65)] transition-all duration-300 overflow-hidden rounded-xl sm:rounded-2xl ${
+          isFocused ? "border-[#FD9210]/60 shadow-[0_25px_60px_rgba(253,146,16,0.35)]" : "hover:border-[#FD9210]/40"
+        } ${isSubmitted ? "animate-bounce" : ""}`}
+      >
         {/* Simple elegant overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#E8DCC8]/5 to-transparent"></div>
-        
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#FD9210/20,transparent_55%)]" />
+
         {/* Success animation overlay */}
         {isSubmitted && (
-          <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-green-300/10 flex items-center justify-center z-20 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#54A658]/30 to-[#A3E074]/15 flex items-center justify-center z-20 pointer-events-none">
             <div className="flex flex-col items-center gap-2 animate-pulse">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
+              <div className="w-16 h-16 bg-[#54A658] rounded-full flex items-center justify-center shadow-lg shadow-[#54A658]/60">
                 <Sparkles className="h-8 w-8 text-white" />
               </div>
-              <p className="text-green-600 font-semibold text-lg">Sent!</p>
+              <p className="text-white font-semibold text-lg tracking-wide">To Sinead!</p>
             </div>
           </div>
         )}
-        
-        <CardContent className="relative p-5 sm:p-8 md:p-10">
+
+        <CardContent className="relative p-4 sm:p-7 md:p-9 space-y-5 sm:space-y-6">
           {/* Header with icon */}
-          <div className="text-center mb-5 sm:mb-8">
-            <div className="relative inline-block mb-3 sm:mb-4">
-              <div className="absolute inset-0 bg-[#3C3C3C]/20 rounded-full blur-lg scale-150"></div>
-              <div className="relative w-10 h-10 sm:w-14 sm:h-14 bg-[#3C3C3C] rounded-full flex items-center justify-center mx-auto shadow-lg">
-                <MessageCircle className="h-5 w-5 sm:h-7 sm:w-7 text-[#E8DCC8]" />
+          <div className="text-center space-y-2.5 sm:space-y-3">
+            <div className="relative inline-block">
+              <div className="absolute inset-0 bg-[#FD9210]/30 rounded-full blur-2xl scale-150" />
+              <div className="relative w-12 h-12 sm:w-16 sm:h-16 bg-white/10 border border-[#FD9210]/40 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                <MessageCircle className="h-6 w-6 sm:h-8 sm:w-8 text-[#FDDBB2]" />
               </div>
             </div>
-            <h3 className="text-base sm:text-lg md:text-xl font-[family-name:var(--font-crimson)] font-normal text-[#3C3C3C] mb-2 sm:mb-3 uppercase tracking-[0.12em]">
-              Share Your Love
-            </h3>
-            <p className="text-sm sm:text-base text-[#3C3C3C]/80 font-[family-name:var(--font-crimson)] font-light tracking-wide leading-relaxed px-1">
-              Your message will be treasured forever
-            </p>
+            <div className="space-y-2">
+              <p className="text-[0.65rem] sm:text-xs uppercase tracking-[0.35em] text-[#FDDBB2]/70">
+                Letter for Sinead
+              </p>
+              <h3 className="text-base sm:text-xl md:text-2xl font-[family-name:var(--font-inter)] text-white tracking-[0.15em] uppercase">
+                Pour Your Heart Out
+              </h3>
+              <p className="text-xs sm:text-base text-white/80 font-[family-name:var(--font-inter)] leading-relaxed max-w-md mx-auto">
+                Paint Sinead a memory, a blessing, or a promise. Every word will be printed in her keepsake journal after the celebration.
+              </p>
+            </div>
           </div>
 
           <form 
             ref={formRef} 
             onSubmit={handleSubmit} 
-            className="space-y-4 sm:space-y-6"
+            className="space-y-3.5 sm:space-y-5"
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           >
             {/* Name Field */}
-            <div className="space-y-2 sm:space-y-2.5">
-              <label className="block text-xs sm:text-sm font-[family-name:var(--font-crimson)] font-semibold text-[#3C3C3C] uppercase tracking-wider">
+            <div className="space-y-1.5 sm:space-y-2.5">
+              <label className="block text-[0.65rem] sm:text-xs font-[family-name:var(--font-inter)] font-semibold text-white/80 uppercase tracking-[0.25em]">
                 Your Name
               </label>
-              <div className="relative">
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-xl opacity-0 transition group-hover:opacity-100 bg-gradient-to-r from-[#FD9210]/40 via-transparent to-[#54A658]/40 blur" />
                 <Input
                   name="name"
                   required
                   value={nameValue}
-                  onChange={(e) => setNameValue(e.target.value)}
-                  onFocus={() => setFocusedField('name')}
+                  onChange={e => setNameValue(e.target.value)}
+                  onFocus={() => setFocusedField("name")}
                   onBlur={() => setFocusedField(null)}
                   placeholder="Enter your name"
-                  className={`w-full border border-[#3C3C3C]/30 rounded py-2 sm:py-2.5 px-3 sm:px-4 text-sm sm:text-base font-[family-name:var(--font-crimson)] text-[#3C3C3C] placeholder:text-[#3C3C3C]/40 transition-all duration-200 bg-white focus:outline-none ${
-                    focusedField === 'name' 
-                      ? 'border-[#3C3C3C] shadow-sm' 
-                      : 'hover:border-[#3C3C3C]/50'
+                  className={`relative w-full border rounded-lg sm:rounded-xl py-2 sm:py-2.5 px-3 sm:px-4 text-sm sm:text-base font-[family-name:var(--font-inter)] text-white placeholder:text-white/40 transition-all duration-300 bg-white/5 focus:outline-none ${
+                    focusedField === "name"
+                      ? "border-[#FD9210] shadow-[0_0_25px_rgba(253,146,16,0.25)] bg-white/10"
+                      : "border-white/20 hover:border-white/40"
                   }`}
                 />
               </div>
             </div>
 
             {/* Message Field */}
-            <div className="space-y-2 sm:space-y-2.5">
+            <div className="space-y-1.5 sm:space-y-2.5">
               <div className="flex items-center justify-between">
-                <label className="block text-xs sm:text-sm font-[family-name:var(--font-crimson)] font-semibold text-[#3C3C3C] uppercase tracking-wider">
+                <label className="block text-[0.65rem] sm:text-xs font-[family-name:var(--font-inter)] font-semibold text-white/80 uppercase tracking-[0.25em]">
                   Your Message
                 </label>
                 {messageValue && (
-                  <span className={`text-xs font-[family-name:var(--font-crimson)] transition-colors ${
-                    messageValue.length > 500 ? 'text-red-500' : 'text-[#3C3C3C]/50'
-                  }`}>
+                  <span
+                    className={`text-[0.65rem] sm:text-xs font-[family-name:var(--font-inter)] transition-colors ${
+                      messageValue.length > 500 ? "text-red-400" : "text-white/60"
+                    }`}
+                  >
                     {messageValue.length}/500
                   </span>
                 )}
               </div>
-              <div className="relative">
+              <div className="relative group">
+                <div className="absolute inset-0 rounded-2xl opacity-0 transition group-hover:opacity-100 bg-gradient-to-r from-[#54A658]/35 via-transparent to-[#FD9210]/35 blur" />
                 <Textarea
                   name="message"
                   required
                   value={messageValue}
-                  onChange={(e) => {
+                  onChange={e => {
                     if (e.target.value.length <= 500) {
                       setMessageValue(e.target.value)
                     }
                   }}
-                  onFocus={() => setFocusedField('message')}
+                  onFocus={() => setFocusedField("message")}
                   onBlur={() => setFocusedField(null)}
                   placeholder="Share your love, memories, or well wishes..."
-                  className={`w-full border border-[#3C3C3C]/30 rounded min-h-[100px] sm:min-h-[120px] text-sm sm:text-base font-[family-name:var(--font-crimson)] text-[#3C3C3C] placeholder:text-[#3C3C3C]/40 transition-all duration-200 resize-none bg-white py-2 sm:py-2.5 px-3 sm:px-4 focus:outline-none ${
-                    focusedField === 'message' 
-                      ? 'border-[#3C3C3C] shadow-sm' 
-                      : 'hover:border-[#3C3C3C]/50'
+                  className={`relative w-full border rounded-xl sm:rounded-2xl min-h-[110px] sm:min-h-[140px] text-sm sm:text-base font-[family-name:var(--font-inter)] text-white placeholder:text-white/40 transition-all duration-300 resize-none bg-white/5 py-2.5 sm:py-3 px-3.5 sm:px-5 focus:outline-none ${
+                    focusedField === "message"
+                      ? "border-[#54A658] shadow-[0_0_25px_rgba(84,166,88,0.25)] bg-white/10"
+                      : "border-white/20 hover:border-white/40"
                   }`}
                 />
               </div>
@@ -192,9 +203,11 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
             <Button
               type="submit"
               disabled={isSubmitting || !nameValue.trim() || !messageValue.trim()}
-              className="w-full bg-[#3C3C3C] hover:bg-[#3C3C3C]/90 active:bg-[#3C3C3C]/95 text-[#E8DCC8] py-2.5 sm:py-3 px-6 sm:px-8 text-xs sm:text-sm font-[family-name:var(--font-crimson)] font-semibold shadow-md transition-all duration-300 hover:scale-105 active:scale-100 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none border border-[#3C3C3C] tracking-wider uppercase"
+              className="relative w-full overflow-hidden rounded-full bg-gradient-to-r from-[#D2691E] to-[#FF8C00] hover:from-[#FF8C00] hover:to-[#FFB84D] text-white py-2.5 sm:py-3.5 px-5 sm:px-8 text-[0.65rem] sm:text-xs font-[family-name:var(--font-crimson)] font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/70 disabled:opacity-60 disabled:cursor-not-allowed tracking-[0.3em] drop-shadow-lg"
+              style={{
+                boxShadow: '0 4px 15px rgba(255, 140, 0, 0.4), 0 0 20px rgba(255, 165, 0, 0.2)'
+              }}
             >
-              
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
                   <svg className="animate-spin h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24">
@@ -205,11 +218,14 @@ function MessageForm({ onSuccess, onMessageSent }: MessageFormProps) {
                 </span>
               ) : (
                 <span className="flex items-center justify-center gap-2">
-                  <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                  Send Message
+                  <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4 fill-current" />
+                  Seal it with love
                 </span>
               )}
             </Button>
+            <p className="text-[0.6rem] sm:text-xs text-center text-white/60 uppercase tracking-[0.3em] font-[family-name:var(--font-inter)]">
+              posted to sinead’s digital wall
+            </p>
           </form>
         </CardContent>
       </Card>
@@ -224,7 +240,7 @@ export function Messages() {
   const fetchMessages = useCallback(() => {
     setLoading(true)
     fetch(
-      "https://script.google.com/macros/s/AKfycbwzapCtnowMfVEpqtBVKpOKf1E3QtiMAEu4JhF0wLUJcgeuNSNam3_NgFe7Xn3F0oxLeQ/exec"
+      "https://script.google.com/macros/s/AKfycbyIjP05YJVu1XUJ8xDpfNJZXthwlgXm1-gk77BnVVDZgMKOs6tDMDiSsCTVRqvgCYFi/exec"
     )
       .then((res) => res.json())
       .then((data) => {
@@ -254,48 +270,49 @@ export function Messages() {
   }, [fetchMessages])
 
   return (
-    <Section id="messages" className="bg-[#E8DCC8]/80 py-16 sm:py-20 md:py-24 lg:py-28">
+    <Section id="messages" className="relative overflow-hidden bg-[#1B0D05] py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-80"
+        style={{ backgroundImage: "url('/havana/woodbackground.png')" }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#140A03]/95 via-[#1F1207]/90 to-[#120902]/95" aria-hidden="true" />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Decorative background elements */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
           {/* Floating soft glows */}
-          <div className="hidden sm:block absolute -top-6 -left-6 w-24 h-24 bg-[#3C3C3C]/5 rounded-full blur-2xl animate-pulse" />
-          <div className="hidden sm:block absolute top-10 right-0 w-20 h-20 bg-[#3C3C3C]/8 rounded-full blur-xl animate-pulse delay-1000" />
-          <div className="hidden sm:block absolute bottom-10 left-10 w-28 h-28 bg-[#3C3C3C]/5 rounded-full blur-2xl animate-pulse delay-2000" />
-          <div className="sm:hidden absolute top-4 left-0 w-14 h-14 bg-[#3C3C3C]/5 rounded-full blur-lg" />
-          <div className="sm:hidden absolute bottom-6 right-2 w-10 h-10 bg-[#3C3C3C]/8 rounded-full blur-md" />
+          {/* <div className="hidden sm:block absolute -top-6 -left-6 w-24 h-24 bg-[#FD9210]/15 rounded-full blur-2xl animate-pulse" />
+          <div className="hidden sm:block absolute top-10 right-0 w-20 h-20 bg-[#54A658]/15 rounded-full blur-xl animate-pulse delay-1000" />
+          <div className="hidden sm:block absolute bottom-10 left-10 w-28 h-28 bg-white/15 rounded-full blur-2xl animate-pulse delay-2000" />
+          <div className="sm:hidden absolute top-4 left-0 w-14 h-14 bg-white/12 rounded-full blur-lg" />
+          <div className="sm:hidden absolute bottom-6 right-2 w-10 h-10 bg-[#FD9210]/20 rounded-full blur-md" /> */}
 
           {/* Gradient lines */}
-          <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3C3C3C]/20 to-transparent" />
-          <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#3C3C3C]/15 to-transparent" />
+          <div className="absolute top-1/3 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+          <div className="absolute bottom-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#FD9210]/20 to-transparent" />
         </div>
         {/* Header Section */}
-         <div className="text-center mb-12 sm:mb-16 md:mb-20">
-           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-crimson)] font-normal text-[#3C3C3C] mb-8 sm:mb-10 text-balance uppercase tracking-[0.12em] sm:tracking-[0.15em]">
-             Love Messages
-           </h2>
-          
+        <div className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+        <p className="text-[0.65rem] sm:text-xs md:text-sm uppercase tracking-[0.2em] sm:tracking-[0.25em] md:tracking-[0.3em] text-white/80 mb-2 sm:mb-3">
+        Send a heartfelt note to Sinead
+          </p>
+          <h2 className="fugaz-one-regular text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white mb-6 sm:mb-8 md:mb-10 text-balance uppercase tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em]">
+            Toasts for Sinead
+          </h2>
           <div className="max-w-4xl mx-auto">
-            <div className="relative inline-block mb-5 sm:mb-7">
-              <div className="absolute inset-0 bg-[#3C3C3C]/10 rounded-full blur-xl scale-150 animate-pulse"></div>
-            </div>
-            
-            <h3 className="text-lg sm:text-xl md:text-2xl font-[family-name:var(--font-ephesis)] text-[#3C3C3C] mb-4 sm:mb-5">
-              Share Your Heartfelt Wishes
-            </h3>
-            <p className="text-base sm:text-lg md:text-xl text-[#3C3C3C]/80 font-[family-name:var(--font-crimson)] font-light leading-relaxed max-w-2xl mx-auto px-4 sm:px-6 tracking-wide">
-              Your messages of love and joy will be treasured forever. 
-              Share your memories, well wishes, and congratulations for the happy couple.
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/85 font-[family-name:var(--font-inter)] font-light leading-relaxed max-w-2xl mx-auto px-2 sm:px-4 md:px-6 tracking-wide">
+              Celebrate Sinead's sparkling milestone with words that echo warmth, gratitude, and hope. Share a fond story from her childhood, a blessing for her future, or a cheer for the woman she is becoming—each message becomes a keepsake in her debut diary.
             </p>
           </div>
+
         </div>
 
         {/* Form Section */}
         <div className="flex justify-center mb-16 sm:mb-20 md:mb-24">
           <div className="relative max-w-2xl w-full">
             {/* Card halo */}
-            <div className="absolute -inset-3 bg-gradient-to-br from-[#3C3C3C]/15 via-[#3C3C3C]/10 to-transparent rounded-3xl blur-2xl opacity-70" />
-            <div className="absolute -inset-1 bg-gradient-to-br from-[#3C3C3C]/8 via-transparent to-transparent rounded-3xl blur-md opacity-80" />
+            <div className="absolute -inset-3 bg-gradient-to-br from-[#FD9210]/20 via-transparent to-transparent rounded-3xl blur-2xl opacity-70" />
+            <div className="absolute -inset-1 bg-gradient-to-br from-white/15 via-transparent to-transparent rounded-3xl blur-md opacity-80" />
             <MessageForm onMessageSent={fetchMessages} />
           </div>
         </div>
@@ -303,20 +320,20 @@ export function Messages() {
         {/* Messages Display Section */}
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
           {/* Top corner accents */}
-          <div className="absolute -top-3 -left-3 w-4 h-4 bg-[#3C3C3C]/40 rounded-full blur-sm opacity-70" />
-          <div className="absolute -top-3 -right-3 w-4 h-4 bg-[#3C3C3C]/40 rounded-full blur-sm opacity-70" />
-          <div className="text-center mb-10 sm:mb-14 md:mb-16">
-            <div className="relative inline-block mb-5 sm:mb-7">
-              <div className="absolute inset-0 bg-[#3C3C3C]/15 rounded-full blur-xl scale-150"></div>
-              <div className="relative w-12 h-12 sm:w-16 sm:h-16 bg-[#3C3C3C] rounded-full flex items-center justify-center mx-auto shadow-lg">
-                <Heart className="h-6 w-6 sm:h-8 sm:w-8 text-[#E8DCC8]" />
+          <div className="absolute -top-3 -left-3 w-4 h-4 bg-white/40 rounded-full blur-sm opacity-70" />
+          <div className="absolute -top-3 -right-3 w-4 h-4 bg-white/40 rounded-full blur-sm opacity-70" />
+          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-14 xl:mb-16">
+            <div className="relative inline-block mb-4 sm:mb-5 md:mb-7">
+              <div className="absolute inset-0 bg-[#FD9210]/20 rounded-full blur-xl scale-150"></div>
+              <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-white/10 border border-[#FD9210]/40 rounded-full flex items-center justify-center mx-auto shadow-lg">
+                <Heart className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8 text-[#FDDBB2]" />
               </div>
             </div>
-            <h3 className="text-lg sm:text-xl md:text-2xl font-[family-name:var(--font-crimson)] text-[#3C3C3C] mb-3 sm:mb-4">
-              Messages from Loved Ones
+            <h3 className="fugaz-one-regular text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-2 sm:mb-3 md:mb-4 tracking-[0.1em] sm:tracking-[0.12em] uppercase">
+              Words Lighting Sinead's Night
             </h3>
-            <p className="text-base sm:text-lg md:text-xl text-[#3C3C3C]/70 font-[family-name:var(--font-crimson)] font-light max-w-2xl mx-auto px-4 tracking-wide">
-              Read the beautiful messages shared by family and friends
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/80 font-[family-name:var(--font-inter)] font-light max-w-2xl mx-auto px-2 sm:px-4 tracking-wide">
+              Read the heartfelt tributes from family and friends as they serenade Sinead with love.
             </p>
           </div>
           

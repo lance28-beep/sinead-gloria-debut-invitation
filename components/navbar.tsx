@@ -2,13 +2,11 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { Home, MessageCircle, MapPin, Users, Calendar, HelpCircle } from "lucide-react";
-import { siteConfig } from "@/content/site";
 import Dock from "./Dock";
 
 const navLinks = [
-  { href: "#home", label: "Home", icon: Home },
+  { href: "#hero", label: "Home", icon: Home },
   { href: "#messages", label: "Messages", icon: MessageCircle },
   { href: "#details", label: "Details", icon: MapPin },
   { href: "#entourage", label: "Entourage", icon: Users },
@@ -92,7 +90,7 @@ export function Navbar() {
       navLinks.map((link) => {
         const Icon = link.icon;
         return {
-          icon: <Icon size={18} strokeWidth={2.5} className="text-[#E8DCC8]" />,
+          icon: <Icon size={18} strokeWidth={2.5} className="text-[#FD9210]" />,
           label: link.label,
           onClick: () => handleSmoothScroll(link.href),
         };
@@ -105,58 +103,43 @@ export function Navbar() {
       <nav
         className={`sticky top-0 z-50 transition-all duration-500 ease-out ${
           isScrolled
-            ? "bg-[#E8DCC8]/98 backdrop-blur-md shadow-md border-b border-[#3C3C3C]/20"
-            : "bg-[#E8DCC8]/95 backdrop-blur-sm border-b border-[#3C3C3C]/10"
+            ? "bg-[#6A391B]/95 shadow-lg border-b border-[#FD9210]/30"
+            : "bg-[#6A391B]/85 border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto px-3 sm:px-5 md:px-7 lg:px-10 relative">
           <div className="flex items-center h-14 sm:h-16 md:h-14 md:justify-between">
             {/* Logo/Brand Section - Optimized for iPhone SE */}
-            <Link href="#home" className="flex-shrink-0 group relative z-10">
+            <Link href="#hero" className="flex-shrink-0 group relative z-10">
               <div className="flex items-center gap-1.5 sm:gap-2.5 md:gap-3">
-                {/* Monogram Image - Responsive sizing */}
-                <div className="relative w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 flex-shrink-0 group-hover:scale-110 transition-all duration-300 ease-out">
-                  <Image
-                    src="/monogram/image.png"
-                    alt="Marvin & Annie Monogram"
-                    fill
-                    className="object-contain drop-shadow-sm"
-                    priority
-                  />
-                </div>
+
 
                 {/* Names - Always in a row */}
                 <div className="flex flex-row items-center gap-1">
-                  <span className="text-[0.65rem] sm:text-sm md:text-base lg:text-lg font-[family-name:var(--font-crimson)] font-bold group-hover:text-[#3C3C3C]/70 transition-all duration-300 tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] text-[#3C3C3C] uppercase leading-tight">
-                    {siteConfig.couple.groomNickname}
-                  </span>
-                  <span className="text-[0.65rem] sm:text-sm md:text-base lg:text-lg text-[#3C3C3C] font-[family-name:var(--font-crimson)] font-bold">
-                    &
-                  </span>
-                  <span className="text-[0.65rem] sm:text-sm md:text-base lg:text-lg font-[family-name:var(--font-crimson)] font-bold group-hover:text-[#3C3C3C]/70 transition-all duration-300 tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] text-[#3C3C3C] uppercase leading-tight">
-                    {siteConfig.couple.brideNickname}
+                  <span className="text-sm sm:text-base md:text-lg lg:text-xl font-[family-name:var(--font-crimson)] font-bold text-[#FD9210] group-hover:text-white transition-all duration-300 tracking-[0.1em] sm:tracking-[0.15em] md:tracking-[0.2em] uppercase leading-tight drop-shadow-md">
+                  Sinead Gloria L. Heussaf
                   </span>
                 </div>
               </div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex gap-1 lg:gap-2 items-center">
+            <div className="hidden md:flex gap-1.5 lg:gap-3 items-center">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.href;
                 return (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-2.5 lg:px-4 py-2 text-xs lg:text-sm font-[family-name:var(--font-crimson)] font-medium tracking-wide transition-all duration-300 relative group rounded-md ${
+                    className={`px-3 lg:px-5 py-2 text-xs lg:text-sm font-[family-name:var(--font-crimson)] font-semibold tracking-[0.15em] transition-all duration-300 relative group rounded-full border ${
                       isActive
-                        ? "text-[#3C3C3C] bg-[#3C3C3C]/5"
-                        : "text-[#3C3C3C]/70 hover:text-[#3C3C3C] hover:bg-[#3C3C3C]/5"
+                        ? "text-white border-white/70 bg-[#FD9210]/30 shadow-lg shadow-black/20"
+                        : "text-white/80 border-transparent hover:text-white hover:border-white/40 hover:bg-white/10"
                     }`}
                   >
                     {link.label}
                     <span
-                      className={`absolute bottom-1 left-2.5 lg:left-4 right-2.5 lg:right-4 h-0.5 bg-[#3C3C3C] rounded-full transition-all duration-300 ${
+                      className={`absolute -bottom-1 left-4 right-4 h-0.5 bg-[#54A658] rounded-full transition-all duration-300 ${
                         isActive ? "opacity-100" : "opacity-0 group-hover:opacity-100"
                       }`}
                     />
@@ -177,7 +160,7 @@ export function Navbar() {
           baseItemSize={44}
           magnification={58}
           distance={140}
-          className="bg-[#E8DCC8]/96 backdrop-blur-lg pointer-events-auto shadow-2xl border-t border-[#3C3C3C]/10"
+          className="bg-[#6A391B]/95 backdrop-blur-lg pointer-events-auto shadow-2xl border-t border-[#FD9210]/25"
         />
       </div>
     </>

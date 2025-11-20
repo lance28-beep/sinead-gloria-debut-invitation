@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
+import Image from "next/image";
 import {
   Instagram,
   Facebook,
@@ -19,7 +20,7 @@ export function SnapShare() {
     typeof window !== "undefined"
       ? window.location.href
       : "https://example.com";
-  const shareText = `Join us in celebrating Marvin & Joy's special day! Check out their wedding website: ${websiteUrl} 💕`;
+  const shareText = `Join us in celebrating Sinead's Havana nights debut celebration! Check out the website: ${websiteUrl}`;
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 640);
@@ -79,133 +80,212 @@ export function SnapShare() {
   return (
     <Section
       id="snap-share"
-      className="relative bg-transparent py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden"
+      className="relative bg-[#1B0D05] pt-12 sm:pt-16 md:pt-20 lg:pt-24 xl:pt-28 pb-0 overflow-hidden"
     >
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6 md:px-8">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-60"
+        style={{ backgroundImage: "url('/havana/woodbackground.png')" }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#140A03]/95 via-[#1F1207]/90 to-[#120902]/95" aria-hidden="true" />
+
+      {/* Photo leaf asset top-right */}
+      <div
+        className="absolute top-0 right-0 pointer-events-none z-[5] w-[450px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[450px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
+      >
+        <Image
+          src="/havana/leaf.png"
+          alt="Tropical leaf top right"
+          fill
+          className="object-contain object-right-top"
+          priority
+        />
+      </div>
+
+      {/* Photo leaf asset top-left */}
+      <div
+        className="absolute top-0 left-0 pointer-events-none z-[5] w-[450px] sm:w-[440px] md:w-[600px] lg:w-[720px] h-[450px] sm:h-[440px] md:h-[600px] lg:h-[720px]"
+        style={{ transform: "scaleX(-1)" }}
+      >
+        <Image
+          src="/havana/leaf.png"
+          alt="Tropical leaf top left"
+          fill
+          className="object-contain object-left-top"
+          priority
+        />
+      </div>
+
+      {/* Hill asset bottom-right (behind hill3) */}
+      <div
+        className="absolute bottom-0 right-0 pointer-events-none z-[1] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]"
+      >
+        <Image
+          src="/havana/hill5.png"
+          alt="Hill bottom right background"
+          fill
+          className="object-contain object-right-bottom"
+          priority
+        />
+      </div>
+
+      {/* Hill asset bottom-right */}
+      <div
+        className="absolute bottom-0 right-0 pointer-events-none z-[15] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]"
+      >
+        <Image
+          src="/havana/hill3.png"
+          alt="Hill bottom right"
+          fill
+          className="object-contain object-right-bottom"
+          priority
+        />
+      </div>
+
+      {/* Hill asset bottom-left */}
+      <div
+        className="absolute bottom-0 left-0 pointer-events-none z-[15] w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px]"
+      >
+        <Image
+          src="/havana/hill4.png"
+          alt="Hill bottom left"
+          fill
+          className="object-contain object-left-bottom"
+          priority
+        />
+      </div>
+
+      <div className="relative z-20 max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-12 sm:mb-16 md:mb-20"
+          className="text-center mb-8 sm:mb-12 md:mb-16 lg:mb-20"
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-[family-name:var(--font-crimson)] font-normal text-white mb-6 sm:mb-8 uppercase tracking-[0.12em] sm:tracking-[0.15em]"
-            style={{
-              textShadow:
-                "0 0 20px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            Share the Love
+          <p className="text-[0.65rem] sm:text-xs md:text-sm uppercase tracking-[0.25em] sm:tracking-[0.3em] md:tracking-[0.35em] text-[#FDDBB2]/70 mb-2 sm:mb-3 md:mb-4">Spread the Magic</p>
+          <h2 className="fugaz-one-regular text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white mb-4 sm:mb-6 md:mb-8 uppercase tracking-[0.1em] sm:tracking-[0.12em] md:tracking-[0.15em]">
+            Share the Celebration
           </h2>
 
-          <p
-            className="text-base sm:text-lg md:text-xl font-[family-name:var(--font-crimson)] text-white font-light max-w-2xl mx-auto leading-relaxed tracking-wide px-4"
-            style={{
-              textShadow:
-                "0 0 15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.5)",
-            }}
-          >
-            Spread the joy! Share our wedding website with family and friends so they can join in our celebration
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-[family-name:var(--font-inter)] text-white/85 max-w-2xl mx-auto leading-relaxed tracking-wide px-2 sm:px-4">
+            Help us spread the joy of this special Havana nights celebration! Share our website with family and friends so they can join in the magic of this unforgettable moment.
           </p>
         </motion.div>
 
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10 max-w-5xl mx-auto items-start"
           variants={staggerChildren}
           initial="initial"
           animate="animate"
         >
-          {/* QR Code & Social Media */}
-          <motion.div className="space-y-6 sm:space-y-8" variants={fadeInUp}>
-            {/* QR Code Card */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-br from-[#1A1A1A]/20 to-[#1A1A1A]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+          {/* QR Code Card */}
+          <motion.div className="relative group" variants={fadeInUp}>
+            <div className="absolute -inset-1 sm:-inset-2 rounded-2xl sm:rounded-[28px] md:rounded-[36px] bg-gradient-to-br from-[#FD9210]/25 via-transparent to-transparent blur-3xl opacity-70 group-hover:opacity-100 transition-opacity" />
 
-              <div className="relative bg-white backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 border-2 border-[#1A1A1A]/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#1A1A1A]/60 text-center">
-                <h4 className="text-lg sm:text-xl md:text-2xl font-[family-name:var(--font-crimson)] font-semibold text-[#1A1A1A] mb-4">
-                  Quick Share with QR Code
-                </h4>
-                
-                <p className="text-sm sm:text-base font-[family-name:var(--font-crimson)] text-[#1A1A1A]/70 mb-6">
-                  Let guests easily access our wedding website
-                </p>
+            <div className="relative bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl md:rounded-[28px] lg:rounded-[32px] border border-white/15 shadow-[0_35px_90px_rgba(0,0,0,0.65)] overflow-hidden text-center h-full flex flex-col">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-px rounded-[calc(1rem-1px)] sm:rounded-[calc(1.5rem-1px)] md:rounded-[calc(1.75rem-1px)] lg:rounded-[30px] border border-white/10" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#FFFFFF0D,transparent_65%)]" />
+              </div>
 
-                <div className="inline-flex flex-col items-center bg-[#E8DCC8]/10 p-4 sm:p-6 rounded-xl border border-[#1A1A1A]/20 mb-4">
-                  <div className="mb-4 p-3 rounded-xl bg-white shadow-md border border-[#1A1A1A]/10">
-                    <QRCodeCanvas
-                      id="snapshare-qr"
-                      value={websiteUrl}
-                      size={isMobile ? 128 : 160}
-                      includeMargin
-                      className="bg-white"
-                    />
-                  </div>
-                  <button
-                    onClick={downloadQRCode}
-                    className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-[#1A1A1A] hover:bg-[#3C3C3C] text-[#E8DCC8] rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-xs sm:text-sm font-[family-name:var(--font-crimson)] font-semibold"
-                  >
-                    <Download className="w-4 h-4" />
-                    <span>Download QR Code</span>
-                  </button>
+              <div className="relative p-4 sm:p-6 md:p-8 lg:p-10 text-white flex-1 flex flex-col justify-between">
+                <div>
+                  <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-[family-name:var(--font-inter)] font-semibold text-white mb-2 sm:mb-3 md:mb-4">
+                    Quick Share with QR Code
+                  </h4>
+                  
+                  <p className="text-xs sm:text-sm md:text-base font-[family-name:var(--font-inter)] text-white/70 mb-4 sm:mb-5 md:mb-6">
+                    Let guests easily access our celebration website
+                  </p>
                 </div>
 
-                <p className="text-xs sm:text-sm font-[family-name:var(--font-crimson)] text-[#1A1A1A]/70">
-                  Scan to instantly visit our wedding website
-                </p>
+                <div className="flex flex-col items-center">
+                  <div className="inline-flex flex-col items-center bg-white/5 backdrop-blur-sm p-3 sm:p-4 md:p-6 rounded-lg sm:rounded-xl border border-white/15 mb-3 sm:mb-4">
+                    <div className="mb-3 sm:mb-4 p-2 sm:p-3 rounded-lg sm:rounded-xl bg-white shadow-md border border-white/20">
+                      <QRCodeCanvas
+                        id="snapshare-qr"
+                        value={websiteUrl}
+                        size={isMobile ? 100 : 180}
+                        includeMargin
+                        className="bg-white"
+                      />
+                    </div>
+                    <button
+                      onClick={downloadQRCode}
+                      className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 md:py-3 bg-white/10 hover:bg-white/15 text-white border border-white/20 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg text-[0.65rem] sm:text-xs md:text-sm font-[family-name:var(--font-inter)] font-semibold backdrop-blur-sm"
+                    >
+                      <Download className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <span>Download QR Code</span>
+                    </button>
+                  </div>
+
+                  <p className="text-[0.65rem] sm:text-xs md:text-sm font-[family-name:var(--font-inter)] text-white/70">
+                    Scan to instantly visit our celebration website
+                  </p>
+                </div>
               </div>
             </div>
+          </motion.div>
 
-            {/* Social Media Card */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-br from-[#1A1A1A]/20 to-[#1A1A1A]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+          {/* Social Media Card */}
+          <motion.div className="relative group" variants={fadeInUp}>
+            <div className="absolute -inset-1 sm:-inset-2 rounded-2xl sm:rounded-[28px] md:rounded-[36px] bg-gradient-to-br from-[#FD9210]/25 via-transparent to-transparent blur-3xl opacity-70 group-hover:opacity-100 transition-opacity" />
 
-              <div className="relative bg-white backdrop-blur-sm rounded-xl sm:rounded-2xl p-6 sm:p-8 border-2 border-[#1A1A1A]/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#1A1A1A]/60">
-                <h5 className="text-lg sm:text-xl md:text-2xl font-[family-name:var(--font-crimson)] font-semibold text-[#1A1A1A] mb-3 text-center">
-                  Spread the Word
-                </h5>
-                
-                <p className="text-sm sm:text-base font-[family-name:var(--font-crimson)] text-[#1A1A1A]/70 mb-6 text-center">
-                  Share our celebration with your network
-                </p>
+            <div className="relative bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl md:rounded-[28px] lg:rounded-[32px] border border-white/15 shadow-[0_35px_90px_rgba(0,0,0,0.65)] overflow-hidden h-full flex flex-col">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-px rounded-[calc(1rem-1px)] sm:rounded-[calc(1.5rem-1px)] md:rounded-[calc(1.75rem-1px)] lg:rounded-[30px] border border-white/10" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#FFFFFF0D,transparent_65%)]" />
+              </div>
 
-                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="relative p-4 sm:p-6 md:p-8 lg:p-10 text-white flex-1 flex flex-col">
+                <div className="mb-4 sm:mb-5 md:mb-6">
+                  <h5 className="text-base sm:text-lg md:text-xl lg:text-2xl font-[family-name:var(--font-inter)] font-semibold text-white mb-2 sm:mb-3 text-center">
+                    Spread the Word
+                  </h5>
+                  
+                  <p className="text-xs sm:text-sm md:text-base font-[family-name:var(--font-inter)] text-white/70 mb-4 sm:mb-5 md:mb-6 text-center">
+                    Share our Havana nights celebration with your network
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 flex-1">
                   <button
                     onClick={() => shareOnSocial("instagram")}
-                    className="group flex items-center justify-center gap-2 bg-gradient-to-br from-pink-500 via-purple-500 to-pink-600 text-white px-3 sm:px-4 py-3 sm:py-4 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
+                    className="group flex flex-col items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-br from-pink-500 via-purple-500 to-pink-600 text-white px-2 sm:px-3 md:px-4 py-3 sm:py-4 md:py-5 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
                   >
-                    <Instagram className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-                    <span className="font-[family-name:var(--font-crimson)] font-semibold text-xs sm:text-sm">
+                    <Instagram className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                    <span className="font-[family-name:var(--font-inter)] font-semibold text-[0.65rem] sm:text-xs md:text-sm">
                       Instagram
                     </span>
                   </button>
 
                   <button
                     onClick={() => shareOnSocial("facebook")}
-                    className="group flex items-center justify-center gap-2 bg-gradient-to-br from-blue-500 to-blue-700 text-white px-3 sm:px-4 py-3 sm:py-4 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
+                    className="group flex flex-col items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-br from-blue-500 to-blue-700 text-white px-2 sm:px-3 md:px-4 py-3 sm:py-4 md:py-5 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
                   >
-                    <Facebook className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-                    <span className="font-[family-name:var(--font-crimson)] font-semibold text-xs sm:text-sm">
+                    <Facebook className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                    <span className="font-[family-name:var(--font-inter)] font-semibold text-[0.65rem] sm:text-xs md:text-sm">
                       Facebook
                     </span>
                   </button>
 
                   <button
                     onClick={() => shareOnSocial("tiktok")}
-                    className="group flex items-center justify-center gap-2 bg-gradient-to-br from-black via-gray-800 to-black text-white px-3 sm:px-4 py-3 sm:py-4 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
+                    className="group flex flex-col items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-br from-black via-gray-800 to-black text-white px-2 sm:px-3 md:px-4 py-3 sm:py-4 md:py-5 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
                   >
-                    <Share2 className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-                    <span className="font-[family-name:var(--font-crimson)] font-semibold text-xs sm:text-sm">
+                    <Share2 className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                    <span className="font-[family-name:var(--font-inter)] font-semibold text-[0.65rem] sm:text-xs md:text-sm">
                       TikTok
                     </span>
                   </button>
 
                   <button
                     onClick={() => shareOnSocial("twitter")}
-                    className="group flex items-center justify-center gap-2 bg-gradient-to-br from-sky-400 to-blue-500 text-white px-3 sm:px-4 py-3 sm:py-4 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
+                    className="group flex flex-col items-center justify-center gap-1.5 sm:gap-2 bg-gradient-to-br from-sky-400 to-blue-500 text-white px-2 sm:px-3 md:px-4 py-3 sm:py-4 md:py-5 rounded-lg hover:scale-105 transition-all duration-200 shadow-md hover:shadow-xl"
                   >
-                    <Twitter className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform" />
-                    <span className="font-[family-name:var(--font-crimson)] font-semibold text-xs sm:text-sm">
+                    <Twitter className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 group-hover:scale-110 transition-transform" />
+                    <span className="font-[family-name:var(--font-inter)] font-semibold text-[0.65rem] sm:text-xs md:text-sm">
                       Twitter
                     </span>
                   </button>
@@ -217,31 +297,38 @@ export function SnapShare() {
 
         {/* Closing Message */}
         <motion.div
-          className="text-center mt-12 sm:mt-16"
+          className="text-center mt-8 sm:mt-12 md:mt-16 pb-12 sm:pb-16 md:pb-20 lg:pb-24 xl:pb-28"
           variants={fadeInUp}
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          <div className="relative group max-w-3xl mx-auto">
-            <div className="absolute -inset-1 bg-gradient-to-br from-[#1A1A1A]/20 to-[#1A1A1A]/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+          <div className="relative group max-w-3xl mx-auto px-2 sm:px-0">
+            <div className="absolute -inset-1 sm:-inset-2 rounded-2xl sm:rounded-[28px] md:rounded-[36px] bg-gradient-to-br from-[#FD9210]/25 via-transparent to-transparent blur-3xl opacity-70 group-hover:opacity-100 transition-opacity" />
 
-            <div className="relative bg-white backdrop-blur-sm rounded-xl sm:rounded-2xl p-8 sm:p-10 md:p-12 border-2 border-[#1A1A1A]/40 shadow-xl hover:shadow-2xl transition-all duration-300 hover:border-[#1A1A1A]/60">
-              <p className="text-base sm:text-lg md:text-xl font-[family-name:var(--font-crimson)] text-[#1A1A1A] leading-relaxed mb-6">
-                Thank you for helping us share our special day with loved ones near and far. Your support means the world to us!
-              </p>
-
-              {/* Decorative Line */}
-              <div className="flex items-center justify-center gap-3 sm:gap-4 my-6">
-                <div className="h-px w-12 sm:w-16 md:w-20 bg-[#1A1A1A]/50" />
-                <div className="w-1.5 h-1.5 bg-[#1A1A1A]/60 rounded-full" />
-                <div className="h-px w-12 sm:w-16 md:w-20 bg-[#1A1A1A]/50" />
+            <div className="relative bg-white/5 backdrop-blur-2xl rounded-xl sm:rounded-2xl md:rounded-[28px] lg:rounded-[32px] border border-white/15 shadow-[0_35px_90px_rgba(0,0,0,0.65)] overflow-hidden">
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute inset-px rounded-[calc(1rem-1px)] sm:rounded-[calc(1.5rem-1px)] md:rounded-[calc(1.75rem-1px)] lg:rounded-[30px] border border-white/10" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#FFFFFF0D,transparent_65%)]" />
               </div>
 
-              <div className="text-center">
-                <span className="block text-xl sm:text-2xl md:text-3xl font-[family-name:var(--font-ephesis)] text-[#1A1A1A] font-normal">
-                  – Marvin & Annie –
-                </span>
+              <div className="relative p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 text-white">
+                <p className="text-sm sm:text-base md:text-lg lg:text-xl font-[family-name:var(--font-inter)] text-white/85 leading-relaxed mb-4 sm:mb-5 md:mb-6">
+                  Thank you for helping us share this special Havana nights celebration with loved ones near and far. Your support means the world to us!
+                </p>
+
+                {/* Decorative Line */}
+                <div className="flex items-center justify-center gap-2 sm:gap-3 md:gap-4 my-4 sm:my-5 md:my-6">
+                  <div className="h-px w-8 sm:w-12 md:w-16 lg:w-20 bg-white/20" />
+                  <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white/40 rounded-full" />
+                  <div className="h-px w-8 sm:w-12 md:w-16 lg:w-20 bg-white/20" />
+                </div>
+
+                <div className="text-center">
+                  <span className="block text-lg sm:text-xl md:text-2xl lg:text-3xl font-[family-name:var(--font-ephesis)] text-[#FDDBB2] font-normal">
+                    – Sinead Gloria L. Heussaf –
+                  </span>
+                </div>
               </div>
             </div>
           </div>
